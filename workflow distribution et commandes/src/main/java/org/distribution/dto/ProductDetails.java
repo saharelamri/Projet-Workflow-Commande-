@@ -14,7 +14,21 @@ public class ProductDetails {
      private Long idPdt ;
 	 private String LibellePdt ;
 	private double price ;
+	private String unite;
+	private long qte;
 	
+	public String getUnite() {
+		return unite;
+	}
+	public void setUnite(String unite) {
+		this.unite = unite;
+	}
+	public long getQte() {
+		return qte;
+	}
+	public void setQte(long qte) {
+		this.qte = qte;
+	}
 	public Long getIdPdt() {
 		return idPdt;
 	}
@@ -33,11 +47,14 @@ public class ProductDetails {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public ProductDetails(Long idPdt, String libellePdt, double price) {
+
+	public ProductDetails(Long idPdt, String libellePdt, double price, String unite, long qte) {
 		super();
 		this.idPdt = idPdt;
 		LibellePdt = libellePdt;
 		this.price = price;
+		this.unite = unite;
+		this.qte = qte;
 	}
 	public ProductDetails() {
 		super();

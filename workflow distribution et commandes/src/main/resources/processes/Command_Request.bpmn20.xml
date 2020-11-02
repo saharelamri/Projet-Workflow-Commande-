@@ -14,7 +14,7 @@
     </sequenceFlow>
     <serviceTask id="externalSystemCall" name="Process after approval" flowable:class="org.distribution.handler.CommandApprovalHandler"></serviceTask>
     <sequenceFlow id="sequenceFlow-6bb98ac1-e7fe-4f5a-8f21-b21aa969b2f1" sourceRef="externalSystemCall" targetRef="CommandApprovedTask"></sequenceFlow>
-    <userTask id="CommandApprovedTask" name="Command approved" flowable:assignee="agent">
+    <userTask id="CommandApprovedTask" name="Command approved" flowable:assignee="agent" flowable:formFieldValidation="true">
       <extensionElements>
         <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
       </extensionElements>

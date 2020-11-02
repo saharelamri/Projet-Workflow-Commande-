@@ -11,6 +11,7 @@ import org.distribution.metier.DistributionprocessService;
 import org.flowable.engine.RepositoryService;
 import org.flowable.engine.repository.ProcessDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,12 +59,6 @@ public class Distributionprocesscontroller {
 	    public void approveTask(@PathVariable("taskId") String taskId,@PathVariable("approved") Boolean approved){
 	        procservice.approveCommand(taskId, approved);
 	    }
-	  @GetMapping("/central/task/{taskId}")
-	    public TaskDetails getTaskbyId(@PathVariable("taskId") String taskId) {
-	    	
-	    	return procservice.getTaskDetailsbyId(taskId);
-	    }
-	    
 
 	    @PostMapping("/user/accept/{taskId}")
 	    public void acceptHoliday(@PathVariable("taskId") String taskId){
@@ -76,14 +71,15 @@ public class Distributionprocesscontroller {
 	    }
 
 
-	    @GetMapping("/process/{processId}")
-	    public void checkState(@PathVariable("processId") String processId){
+	    @GetMapping("/processcheck")
+	    public void checkState(String processId){
 	        procservice.checkProcessHistory(processId);
 	    }
 
 	    @PostMapping(value="/process")
 	    public void startProcessInstance() {
 	        procservice.startProcess();
+	        
 	    }
 	    @GetMapping("/latest-definitions")
 	    public List latestDefinitions() {
@@ -94,5 +90,8 @@ public class Distributionprocesscontroller {
 	            .map(ProcessDefinition::getKey)
 	            .collect(Collectors.toList());
 	    }
+	   
+
+
 	   
 }
